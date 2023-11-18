@@ -14,9 +14,9 @@ center_of_frame_x = 320
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    # main.run_scan()
-    a = main.start_arduino()
-    main.start_laser_arduino(a)
+    main.run_scan()
+    # a = main.start_arduino()
+    # main.start_laser_arduino(a)
 
 
 def run_scan():
@@ -31,6 +31,7 @@ def run_scan():
     while True:
         try:  # used try so that if user pressed other than the given key error will not be shown
             if keyboard.is_pressed('q'):  # if key 'q' is pressed
+                print("Got q key!")
                 main.start_laser_arduino(arduino)
                 point = laser_get.display_stream_and_calculate_light(vid)
                 print("point is: ", point)
@@ -90,3 +91,6 @@ def control_arduino():
     #     print("count", b)
     #     b = b + 1
     # # a.serial.close()
+
+
+# def get_press_from
