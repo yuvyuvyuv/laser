@@ -14,9 +14,10 @@ center_of_frame_x = 320
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    main.run_scan()
-    # a = main.start_arduino()
-    # main.start_laser_arduino(a)
+    # main.run_scan()
+    a = main.start_arduino()
+    main.start_laser_arduino(a)
+    # main.stop_laser_arduino(a)
 
 
 def run_scan():
@@ -44,6 +45,7 @@ def run_scan():
             break  # if user pressed a key other than the given key the loop will break
     final_dist = get_range.get_range(320, point[0])
     print("distance to wall, from camera, is: ", final_dist)
+    laser_get.stop_video(vid)
 
 
 def start_arduino():
