@@ -31,8 +31,8 @@ def run_scan():
     print("Press a key to start:")
     while True:
         try:  # used try so that if user pressed other than the given key error will not be shown
-            if keyboard.is_pressed('q'):  # if key 'q' is pressed
-                print("Got q key!")
+            if keyboard.is_pressed('h'):  # if key 'q' is pressed
+                print("Got h key!")
                 main.start_laser_arduino(arduino)
                 point = laser_get.display_stream_and_calculate_light(vid)
                 print("point is: ", point)
@@ -42,7 +42,7 @@ def run_scan():
             else:
                 continue
         except:
-            break  # if user pressed a key other than the given key the loop will break
+            continue  # if user pressed a key other than the given key the loop will break
     final_dist = get_range.get_range(320, point[0])
     print("distance to wall, from camera, is: ", final_dist)
     laser_get.stop_video(vid)

@@ -7,7 +7,7 @@ import get_range
 
 def start_video_capture():
     # define a video capture object
-    vid = cv2.VideoCapture(1)
+    vid = cv2.VideoCapture(0)
     return vid
 
 
@@ -15,10 +15,11 @@ def display_stream_and_calculate_light(vid):
     while True:
         ret, frame = vid.read()
         # Display the resulting frame
-        if cv2.waitKey(1) & 0xFF == ord('t'):
-            break
+        if cv2.waitKey(1) & 0xFF == ord('q'):
+            continue
         else:
             pass
+        
         gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
         (thresh, BandWimage) = cv2.threshold(gray, 200, 255, cv2.THRESH_BINARY)
         conturs, _ = cv2.findContours(BandWimage, 1, 2)
@@ -35,8 +36,9 @@ def display_stream_and_calculate_light(vid):
             laser_point = points[np.argmax(color)]
             cv2.rectangle(BandWimage, (laser_point[0], laser_point[1]), (laser_point[0] + laser_point[2], laser_point[1] + laser_point[3]), 30, 3)
             print(laser_point)
-        cv2.imshow('frame', frame)
         final_dist = get_range.get_range(320, laser_point[0])
+        cv2.imshow('frame', BandWimage)
+
         print("distance to wall, from camera, is: ", final_dist)
 
 
