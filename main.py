@@ -44,7 +44,7 @@ def run_scan():
                 continue
         except:
             continue  # if user pressed a key other than the given key the loop will break
-    final_dist = get_range.get_range(320, point[0])
+    final_dist = get_range.get_range(center_of_frame_x, point[0])
     print("distance to wall, from camera, is: ", final_dist)
     laser_get.stop_video(vid)
 
