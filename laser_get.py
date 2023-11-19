@@ -27,7 +27,7 @@ def display_stream_and_calculate_light(vid):
         color = []
         for c in conturs:
             x, y, w, h = cv2.boundingRect(c)
-            if w < 30 and h < 30:
+            if w < 30 and h < 30 and y < 380 and y > 180:
                 points.append([x, y, w, h])
                 color.append(gray[y, x])
         if color is []:
