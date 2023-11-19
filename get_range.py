@@ -1,4 +1,4 @@
-d = 0.475  # TODO: measure d
+d = 0.475
 """ TODO: range between laser and camera, in meters """
 
 
