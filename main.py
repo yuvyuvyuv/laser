@@ -10,7 +10,7 @@ import laser_get
 import get_range
 
 
-center_of_frame_x = 320
+center_of_frame_x = 400
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -46,7 +46,7 @@ def run_scan():
         except Exception as e:
             print(str(e))
             continue  # if user pressed a key other than the given key the loop will break
-    final_dist = get_range.get_range(center_of_frame_x, h[0])
+    final_dist = get_range.get_range(center_of_frame_x, point[0])
     print("distance to wall, from camera, is: ", final_dist)
     laser_get.stop_video(vid)
 
