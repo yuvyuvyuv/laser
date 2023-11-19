@@ -10,7 +10,7 @@ import laser_get
 import get_range
 
 
-center_of_frame_x = 400
+center_of_frame_x = 320
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
@@ -26,7 +26,7 @@ def run_scan():
     # main.stop_laser_arduino(arduino)
     # time.sleep(5)
     vid = laser_get.start_video_capture()
-    frame_to_reduce = laser_get.get_background(vid)
+    # frame_to_reduce = laser_get.get_background(vid)
     # time.sleep(4)
     # main.stop_laser_arduino(arduino)
     print("Press a key to start:")
@@ -35,6 +35,7 @@ def run_scan():
             if keyboard.is_pressed('h'):  # if key 'q' is pressed
                 print("Got h key!")
                 main.start_laser_arduino(arduino)
+                # point = laser_get.display_stream_and_calculate_light(vid)
                 point = laser_get.display_stream_and_calculate_light(vid)
                 print("point is: ", point)
                 break
@@ -42,9 +43,10 @@ def run_scan():
                 print('Finished')
             else:
                 continue
-        except:
+        except Exception as e:
+            print(str(e))
             continue  # if user pressed a key other than the given key the loop will break
-    final_dist = get_range.get_range(center_of_frame_x, point[0])
+    final_dist = get_range.get_range(center_of_frame_x, h[0])
     print("distance to wall, from camera, is: ", final_dist)
     laser_get.stop_video(vid)
 

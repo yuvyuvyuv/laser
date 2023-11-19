@@ -29,10 +29,10 @@ def get_background(vid):
             continue
         else:
             pass
-    return int(sum1/i)
+    return (sum1/i).astype(int)
 
 
-def display_stream_and_calculate_light(vid, frame_t_r):
+def display_stream_and_calculate_light(vid):
     while True:
         ret, frame = vid.read()
         # Display the resulting frame
@@ -54,7 +54,10 @@ def display_stream_and_calculate_light(vid, frame_t_r):
         if color is []:
             print("Cant find")
         else:
-            laser_point = points[np.argmax(color)]
+            if len(color) > 0:
+                laser_point = points[np.argmax(color)]
+            else:
+                continue
             cv2.rectangle(BandWimage, (laser_point[0], laser_point[1]), (laser_point[0] + laser_point[2], laser_point[1] + laser_point[3]), 30, 3)
             print(laser_point)
         final_dist = get_range.get_range(320, laser_point[0])
