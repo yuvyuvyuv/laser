@@ -26,6 +26,7 @@ def run_scan():
     # main.stop_laser_arduino(arduino)
     # time.sleep(5)
     vid = laser_get.start_video_capture()
+    frame_to_reduce = laser_get.get_background(vid)
     # time.sleep(4)
     # main.stop_laser_arduino(arduino)
     print("Press a key to start:")
